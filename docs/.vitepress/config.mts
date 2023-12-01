@@ -18,6 +18,7 @@ export default defineConfig({
       {
         text: 'Getting Started',
         items: [
+          { text: 'Introduction', link: '/introduction' },
           { text: 'Installation', link: '/installation' },
           { text: 'Features', link: '/features' },
         ],
@@ -25,20 +26,49 @@ export default defineConfig({
       {
         text: 'Commands',
         items: [
-          { text: 'add', link: '/commands/add' },
-          { text: 'analyze', link: '/commands/analyze' },
-          { text: 'bin', link: '/commands/bin' },
-          { text: 'check', link: '/commands/check' },
-          { text: 'clean', link: '/commands/clean' },
-          { text: 'docker', link: '/commands/docker' },
-          { text: 'fix', link: '/commands/fix' },
-          { text: 'init', link: '/commands/init' },
-          { text: 'run', link: '/commands/run' },
-          { text: 'setup', link: '/commands/setup' },
-          { text: 'set', link: '/commands/set' },
-          { text: 'touch', link: '/commands/touch' },
-          { text: 'update', link: '/commands/update' },
-          { text: 'version', link: '/commands/version' },
+          {
+            collapsed: true,
+            text: 'Blue',
+            items: [
+              { text: 'blue bin', link: '/commands/bin' },
+              { text: 'blue update', link: '/commands/update' },
+              { text: 'blue version', link: '/commands/version' },
+            ],
+          },
+          {
+            collapsed: true,
+            text: 'Global',
+            items: [{ text: 'blue touch', link: '/commands/touch' }],
+          },
+          {
+            collapsed: true,
+            text: 'Workspace',
+            items: [
+              { text: 'blue add', link: '/commands/add' },
+              { text: 'blue analyze', link: '/commands/analyze' },
+              { text: 'blue check', link: '/commands/check' },
+              { text: 'blue clean', link: '/commands/clean' },
+              { text: 'blue docker', link: '/commands/docker' },
+              { text: 'blue fix', link: '/commands/fix' },
+              { text: 'blue init', link: '/commands/init' },
+              { text: 'blue run', link: '/commands/run' },
+              { text: 'blue setup', link: '/commands/setup' },
+            ],
+          },
+          {
+            collapsed: true,
+            text: 'Misc',
+            items: [{ text: 'blue set', link: '/commands/set' }],
+          },
+        ],
+      },
+      {
+        text: 'Automation',
+        items: [
+          {
+            text: 'GitHub Actions',
+            link: 'automation/github-actions',
+          },
         ],
       },
     ],

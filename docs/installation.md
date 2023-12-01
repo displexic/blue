@@ -1,5 +1,9 @@
 # Installation
 
+::: warning Important
+This project is still in development, don't expect any of the features to work. I (Slekup) also don't have a macOS device to test on, so macOS support is not guaranteed. If you want to help with macOS support, that would be greatly appreciated.
+:::
+
 ## On Windows
 
 ```powershell

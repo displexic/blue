@@ -1,4 +1,4 @@
-# Check
+# blue check
 
 Alias: `ch`
 
