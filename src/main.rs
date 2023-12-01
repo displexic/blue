@@ -1,6 +1,6 @@
-use blue::commands::check;
-use blue::commands::setup;
-use blue::config::Config;
+use blue_cli::commands::check;
+use blue_cli::commands::setup;
+use blue_cli::config::Config;
 use clap::{Parser, Subcommand};
 
 #[derive(Subcommand, Debug)]

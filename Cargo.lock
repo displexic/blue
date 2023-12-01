@@ -51,7 +51,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "blue"
+name = "blue-cli"
 version = "0.0.1"
 dependencies = [
  "clap",

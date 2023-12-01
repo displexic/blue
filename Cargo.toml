@@ -1,9 +1,26 @@
 [package]
-name = "blue"
+name = "blue-cli"
 version = "0.0.1"
+description = "Fast and extensible workspace manager"
 edition = "2021"
+readme = "README.md"
+homepage = "https://github.com/slekup/blue"
+repository = "https://github.com/slekup/blue"
+keywords = ["workspace", "manager", "cli", "tool", "fast", "extensible"]
+categories = ["cli", "workspace", "manager", "tool"]
+license = "GPL-3.0"
+license-file = "LICENSE"
+default-run = "blue"
+authors = ["Slekup <slekupvimplyrataqq@protonmail.com>"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[[bin]]
+name = "blue"
+path = "src/main.rs"
+
+
+[profile.release]
+lto = true
+codegen-units = 1
 
 [dependencies]
 clap = { version = "4.4.8", features = ["derive"] }
@@ -11,7 +28,3 @@ home = "0.5.5"
 serde = { version = "1.0.193", features = ["derive"] }
 serde_derive = "1.0.193"
 toml = "0.8.8"
-
-[profile.release]
-lto = true
-codegen-units = 1
