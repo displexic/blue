@@ -19,9 +19,9 @@ struct Cli {
 fn main() {
     let config_filename = "blue.toml";
     let config_contents = std::fs::read_to_string(config_filename)
-        .expect(format!("{} not found", config_filename).as_str());
+        .unwrap_or_else(|_| panic!("{} not found", config_filename));
     let config: Config = toml::from_str(&config_contents)
-        .expect(format!("{} is not valid toml", config_filename).as_str());
+        .unwrap_or_else(|_| panic!("{} is not valid toml", config_filename));
 
     let cli = Cli::parse();
     match &cli.command {
