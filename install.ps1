@@ -90,7 +90,7 @@ if ($platform -eq 'win') {
   $file="$file.exe"
 }
 
-# Determine latest tag/version
+# Determine latest release tag
 $releases = "https://api.github.com/repos/slekup/blue/releases"
 $tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
 $download = "https://github.com/slekup/blue/releases/download/$tag/$file"
