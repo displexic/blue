@@ -1,0 +1,54 @@
+#[derive(serde::Deserialize)]
+pub struct RootWorkspaceConfig {
+    pub name: Option<String>,
+    pub clean_dirs: Vec<String>,
+    pub prefered_config_file_type: String,
+}
+
+#[derive(serde::Deserialize)]
+pub struct JavaScriptConfig {
+    pub workspace: Vec<String>,
+    pub package_manager: String,
+}
+
+#[derive(serde::Deserialize)]
+pub struct RustConfig {
+    pub workspace: Vec<String>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct DockerComposeProfile {
+    pub name: String,
+    pub file: String,
+}
+
+#[derive(serde::Deserialize)]
+pub struct DockerComposeConfig {
+    pub profiles: Vec<DockerComposeProfile>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct DockerConfig {
+    pub compose: DockerComposeConfig,
+}
+
+#[derive(serde::Deserialize)]
+pub struct EnvTemplate {
+    pub file: String,
+    pub dest: String,
+}
+
+#[derive(serde::Deserialize)]
+pub struct EnvConfig {
+    pub delegate: bool,
+    pub templates: Vec<EnvTemplate>,
+}
+
+#[derive(serde::Deserialize)]
+pub struct Config {
+    pub workspace: Option<RootWorkspaceConfig>,
+    pub javascript: Option<JavaScriptConfig>,
+    pub rust: Option<RustConfig>,
+    pub docker: Option<DockerConfig>,
+    pub env: Option<EnvConfig>,
+}
