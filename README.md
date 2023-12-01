@@ -12,6 +12,7 @@
 
 <div align="center">
   <a href="https://github.com/slekup/blue/actions"><img src="https://github.com/slekup/blue/actions/workflows/tests.yaml/badge.svg?branch=main" alt="Tests Status" /></a>
+  <a href="https://github.com/slekup/blue/releases"><img src="https://img.shields.io/github/v/tag/slekup/blue" alt="Latest Release" /></a>
   <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Made%20with-Rust-1f425f.svg" alt="Made with Rust"></a>
   <a href="hhttps://github.com/slekup/blue/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg" alt="License: BY-NC-SA SA 4.0" /></a>
   <a href="https://github.com/slekup/blue/"><img src="https://img.shields.io/github/stars/slekup/blue?color=9954ED" alt="Github Repo Stars" /></a>
@@ -20,12 +21,21 @@
   </h4>
 </div>
 
-Fast and extensible workspace manager written in Rust.
+<br/>
 
-> [!CAUTION]
-> This project is still in development, don't expect any of the features to work.
+Fast and extensible workspace manager written in Rust:
+
+- **Fast** - Written in Rust with performance in mind.
+- **Extensible** - Supports custom scripts and plugins.
+- **Cross-platform** - Supports Windows, Linux, and macOS.
+- **Private** - Blue doesn't collect any data.
+
+## Features
 
 ## Getting Started
+
+> [!CAUTION]
+> This project is still in development, don't expect any of the features to work. I (Slekup) also don't have a macOS device to test on, so macOS support is not guaranteed. If you want to help with macOS support, that would be greatly appreciated.
 
 Visit [blue.slekup.com](https://blue.slekup.com) to get started with Blue.
 
