@@ -2,8 +2,6 @@
   <img alt="Logo" height="128" width="128" src=".github/blue.png"/>
 </div>
 
-<br/>
-
 <h1 align="center">Blue</h1>
 
 <h4 align="center">
