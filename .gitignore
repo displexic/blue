@@ -13,3 +13,4 @@ target/
 **/.vitepress/cache
 **/node_modules
 **/dist
+docs/public/install.*

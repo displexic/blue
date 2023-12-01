@@ -3,19 +3,19 @@
 ## On Windows
 
 ```powershell
-iwr https://raw.githubusercontent.com/slekup/blue/main/install.ps1 -useb | iex
+iwr https://blue.slekup.com/install.ps1 -useb | iex
 ```
 
 ## On Linux and macOS
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/slekup/blue/main/install.sh | sh -
+curl -fsSL https://blue.slekup.com/install.sh | sh -
 ```
 
 or with `wget`
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/slekup/blue/main/install.sh | sh -
+wget -qO- https://blue.slekup.com/install.sh | sh -
 ```
 
 ## Crates.io

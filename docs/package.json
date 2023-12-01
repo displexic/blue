@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "vitepress build",
+    "build": "cp ../install.sh ./public && cp ../install.ps1 ./public && vitepress build",
     "dev": "vitepress dev",
     "preview": "vitepress preview"
   },
