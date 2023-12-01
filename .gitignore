@@ -10,6 +10,6 @@ target/
 !.vscode/launch.json
 
 # Vitepress
-.vitepress/cache
-node_modules
-dist
+**/.vitepress/cache
+**/node_modules
+**/dist
