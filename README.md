@@ -25,12 +25,29 @@
 
 Fast and extensible workspace manager written in Rust:
 
-- **Fast** - Written in Rust with performance in mind.
-- **Extensible** - Supports custom scripts and plugins.
-- **Cross-platform** - Supports Windows, Linux, and macOS.
-- **Private** - Blue doesn't collect any data.
+- **Fast:** Written in Rust with performance in mind.
+- **Extensible:** Supports custom scripts and plugins.
+- **Cross-platform:** Supports Windows, Linux, and macOS.
+- **Private:** Blue doesn't collect any data.
 
 ## Features
+
+Improve the DX (Developer Experience) of your workspace. Blue can help you with:
+
+- **Workspace setup:** Automatically install dependencies, tools, and extensions.
+- **Environment variables:** Create environment templates and delegate variables to projects from a single source file.
+- **Maintenance:** Update dependencies, languages, package managers, and more with a single command.
+- **Configuration:** Use presets for common build, test, and deployment scenarios and enforce consistent file extensions.
+- **Customization:** Developers can override workspace settings with their own preferences.
+- **Clean-up:** Manually or automatically delete temporary files and folders.
+- **Environment Checks:** Ensure your workspace is set up correctly.
+- **Project Management:** Create, delete, and manage projects easily.
+- **Conventional Commits:** Utilize Git hooks to enforce conventional commits.
+- **Custom Scripts:** Add custom scripts to be run with Git Bash.
+- **GitHub:** Ensure your repository is compliant with GitHub's best practices.
+- **Docker Management:** Manage your Docker containers and images with ease.
+- **Reusability:** Create reusable workspace and project templates and publish them to GitHub.
+- **Analytics:** Gain valuable insight into your workspace.
 
 ## Getting Started
 
