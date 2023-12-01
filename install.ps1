@@ -92,7 +92,13 @@ if ($platform -eq 'win') {
 
 # Determine latest release tag
 $releases = "https://api.github.com/repos/slekup/blue/releases"
-$tag = (Invoke-WebRequest $releases | ConvertFrom-Json)[0].tag_name
+$tagsResponse = Invoke-WebRequest $releases | ConvertFrom-Json
+if ($tagsResponse.Count -gt 0) {
+    $tag = $tagsResponse[0].tag_name
+} else {
+    Write-Error "No tags found in the GitHub repository. Unable to determine the latest release."
+    # Add your error handling or exit logic here
+}
 $download = "https://github.com/slekup/blue/releases/download/$tag/$file"
 
 Write-Host "Downloading Blue from latest GitHub release...`n" -ForegroundColor Green
