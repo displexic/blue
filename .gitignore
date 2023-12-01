@@ -8,3 +8,8 @@ target/
 !.vscode/extensions.json
 !.vscode/settings.json
 !.vscode/launch.json
+
+# Vitepress
+.vitepress/cache
+node_modules
+dist
