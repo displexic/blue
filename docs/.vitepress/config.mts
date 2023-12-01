@@ -1,28 +1,29 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress';
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Blue",
-  description: "Fast and extensible workspace manager",
+  outDir: './dist',
+  title: 'Blue',
+  description: 'Fast and extensible workspace manager',
+  head: [['link', { rel: 'icon', href: '/favicon.ico' }]],
+  cleanUrls: true,
+  ignoreDeadLinks: true,
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    logo: '/logo.png',
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Getting Started', link: '/installation' },
     ],
-
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Getting Started',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
+          { text: 'Installation', link: '/installation' },
+          { text: '', link: '/' },
+        ],
+      },
     ],
 
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
-})
+    socialLinks: [{ icon: 'github', link: 'https://github.com/slekup/blue' }],
+  },
+});
