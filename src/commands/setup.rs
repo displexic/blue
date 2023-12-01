@@ -99,7 +99,7 @@ pub fn run() {
     match env::consts::OS {
         "windows" => {
             let cmd = &format!(
-                "setx PATH \"{};%PATH%\"",
+                "setx PATH \"$Env:PATH;{}\"",
                 &recommended_dir.to_str().unwrap()
             );
             println!("Running command: {}", cmd);
