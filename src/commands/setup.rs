@@ -31,13 +31,12 @@ pub fn run() {
 
             // Create the directory if it doesn't exist
             if !target_dir.exists() {
-                fs::create_dir_all(&target_dir).expect(
-                    format!(
+                fs::create_dir_all(&target_dir).unwrap_or_else(|_| {
+                    panic!(
                         "Failed to create directory: {}",
                         &target_dir.to_str().unwrap()
                     )
-                    .as_str(),
-                );
+                });
             }
 
             target_dir
@@ -55,13 +54,12 @@ pub fn run() {
             let target_dir = PathBuf::from(&target_dir_str);
 
             if !target_dir.exists() {
-                fs::create_dir_all(&target_dir).expect(
-                    format!(
+                fs::create_dir_all(&target_dir).unwrap_or_else(|_| {
+                    panic!(
                         "Failed to create directory: {}",
                         &target_dir.to_str().unwrap()
                     )
-                    .as_str(),
-                );
+                });
             }
 
             target_dir
@@ -69,13 +67,12 @@ pub fn run() {
         "macos" => {
             let target_dir = PathBuf::from("/usr/local/bin/.blue/bin");
             if !target_dir.exists() {
-                fs::create_dir_all(&target_dir).expect(
-                    format!(
+                fs::create_dir_all(&target_dir).unwrap_or_else(|_| {
+                    panic!(
                         "Failed to create directory: {}",
                         &target_dir.to_str().unwrap()
                     )
-                    .as_str(),
-                );
+                });
             }
             target_dir
         }
@@ -146,12 +143,10 @@ pub fn run() {
             let mut found = false;
             let reader = io::BufReader::new(&file);
 
-            for line in reader.lines() {
-                if let Ok(line_content) = line {
-                    if line_content.contains(&required_line) {
-                        found = true;
-                        break;
-                    }
+            for line in reader.lines().flatten() {
+                if line.contains(required_line) {
+                    found = true;
+                    break;
                 }
             }
 

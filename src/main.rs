@@ -20,7 +20,7 @@ struct Cli {
 
 fn require_config(config: &Option<Config>) -> &Config {
     match config {
-        Some(config) => &config,
+        Some(config) => config,
         None => {
             println!("No blue.toml found in current directory");
             std::process::exit(1);
