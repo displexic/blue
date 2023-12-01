@@ -101,7 +101,7 @@ $tempFileFolder = New-TemporaryDirectory
 $tempFile = (Join-Path $tempFileFolder.FullName $fileName)
 
 Invoke-WebRequest $download -OutFile $tempFile -UseBasicParsing
-Invoke-WebRequest $archiveUrl -OutFile $tempFile
+Invoke-WebRequest $download -OutFile $tempFile
 
 Write-Host "Running Blue setup...`n" -ForegroundColor Green
 
