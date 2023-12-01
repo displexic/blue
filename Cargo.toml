@@ -9,7 +9,6 @@ repository = "https://github.com/slekup/blue"
 keywords = ["workspace", "manager", "cli", "tool", "fast", "extensible"]
 categories = ["cli", "workspace", "manager", "tool"]
 license = "GPL-3.0"
-license-file = "LICENSE"
 default-run = "blue"
 authors = ["Slekup <slekupvimplyrataqq@protonmail.com>"]
 
