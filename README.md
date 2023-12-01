@@ -11,7 +11,7 @@
 </h3>
 
 <div align="center">
-  <a href="https://github.com/slekup/blue/actions"><img src="https://github.com/slekup/blue/actions/workflows/test.yaml/badge.svg?branch=main" alt="Tests Status" /></a>
+  <a href="https://github.com/slekup/blue/actions"><img src="https://github.com/slekup/blue/actions/workflows/tests.yaml/badge.svg?branch=main" alt="Tests Status" /></a>
   <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Made%20with-Rust-1f425f.svg" alt="Made with Rust"></a>
   <a href="hhttps://github.com/slekup/blue/blob/main/LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg" alt="License: BY-NC-SA SA 4.0" /></a>
   <a href="https://github.com/slekup/blue/"><img src="https://img.shields.io/github/stars/slekup/blue?color=9954ED" alt="Github Repo Stars" /></a>
