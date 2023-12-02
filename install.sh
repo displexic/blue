@@ -100,7 +100,7 @@ download_and_install() {
   # download the binary to the specified directory
   download "$download" > "$tmp_dir/blue"  || return 1
   chmod +x "$tmp_dir/blue"
-  SHELL="$SHELL" "$tmp_dir/blue" setup || return 1
+  SHELL="$SHELL" "$tmp_dir/blue" boostrap || return 1
 }
 
 download_and_install || abort "Install Error!"

@@ -31,6 +31,7 @@ export default defineConfig({
             text: 'Blue',
             items: [
               { text: 'blue bin', link: '/commands/bin' },
+              { text: 'blue bootstrap', link: '/commands/bootstrap' },
               { text: 'blue update', link: '/commands/update' },
               { text: 'blue version', link: '/commands/version' },
             ],

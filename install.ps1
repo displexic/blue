@@ -109,13 +109,13 @@ $tempFile = (Join-Path $tempFileFolder.FullName $fileName)
 Invoke-WebRequest $download -OutFile $tempFile -UseBasicParsing
 Invoke-WebRequest $download -OutFile $tempFile
 
-Write-Host "Running Blue setup...`n" -ForegroundColor Green
+Write-Host "Running Blue installation...`n" -ForegroundColor Green
 
 if ($platform -ne 'win') {
   chmod +x $tempFile
 }
 
-Start-Process -FilePath $tempFile -ArgumentList "setup" -NoNewWindow -Wait -ErrorAction Continue
+Start-Process -FilePath $tempFile -ArgumentList "boostrap" -NoNewWindow -Wait -ErrorAction Continue
 
 Remove-Item $tempFile
 Remove-Item $tempFileFolder -Recurse

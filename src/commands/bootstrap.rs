@@ -5,7 +5,7 @@ use std::process::Command;
 use std::{env, fs};
 
 #[derive(Args, Debug)]
-pub struct Setup {}
+pub struct Bootstrap {}
 
 pub fn run() {
     println!("Setting up blue...");

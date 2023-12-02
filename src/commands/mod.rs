@@ -1,2 +1,2 @@
+pub mod bootstrap;
 pub mod check;
-pub mod setup;
