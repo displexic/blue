@@ -1,8 +1,8 @@
 #[derive(serde::Deserialize)]
 pub struct RootWorkspaceConfig {
     pub name: Option<String>,
-    pub clean_dirs: Vec<String>,
-    pub prefered_config_file_type: String,
+    pub clean_files: Option<Vec<String>>,
+    pub prefered_config_file_type: Option<String>,
 }
 
 #[derive(serde::Deserialize)]

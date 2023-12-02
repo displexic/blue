@@ -23,6 +23,7 @@ codegen-units = 1
 
 [dependencies]
 clap = { version = "4.4.8", features = ["derive"] }
+glob = "0.3.1"
 home = "0.5.5"
 serde = { version = "1.0.193", features = ["derive"] }
 serde_derive = "1.0.193"
