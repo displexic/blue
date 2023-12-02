@@ -1,6 +1,6 @@
 use clap::Args;
 
-use crate::config::Config;
+use blue_config::Config;
 #[derive(Args, Debug)]
 pub struct Check {
     /// The environment to check

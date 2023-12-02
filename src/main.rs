@@ -3,7 +3,7 @@ use blue_cli::commands::bootstrap;
 use blue_cli::commands::check;
 use blue_cli::commands::clean;
 use blue_cli::commands::version;
-use blue_cli::config::Config;
+use blue_config::Config;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser, Debug)]

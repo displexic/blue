@@ -2,7 +2,7 @@ use clap::Args;
 use glob::glob;
 use std::fs;
 
-use crate::config::Config;
+use blue_config::Config;
 
 #[derive(Args, Debug)]
 

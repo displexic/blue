@@ -1,16 +1,33 @@
-[package]
-name = "blue-cli"
+[workspace]
+members = [".", "crates/blue-config"]
+
+[workspace.package]
 version = "0.0.1"
-description = "Fast and extensible workspace manager"
+license = "GPL-3.0"
 edition = "2021"
-readme = "README.md"
 homepage = "https://github.com/slekup/blue"
 repository = "https://github.com/slekup/blue"
+authors = ["Slekup <slekupvimplyrataqq@protonmail.com>"]
+
+
+[package]
+name = "blue-cli"
+readme = "README.md"
+documentation = "https://blue.slekup.com"
+description = "Fast and extensible workspace manager"
 keywords = ["workspace", "manager", "cli", "fast", "extensible"]
 categories = ["cli", "workspace", "manager", "tool"]
-license = "GPL-3.0"
 default-run = "blue"
-authors = ["Slekup <slekupvimplyrataqq@protonmail.com>"]
+version.workspace = true
+license.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+[workspace.dependencies]
+blue_config = { path = "crates/blue-config" }
+
 
 [[bin]]
 name = "blue"
@@ -22,9 +39,10 @@ lto = true
 codegen-units = 1
 
 [dependencies]
+blue_config = { workspace = true }
 clap = { version = "4.4.8", features = ["derive"] }
-glob = "0.3.1"
-home = "0.5.5"
 serde = { version = "1.0.193", features = ["derive"] }
 serde_derive = "1.0.193"
+glob = "0.3.1"
+home = "0.5.5"
 toml = "0.8.8"

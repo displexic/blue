@@ -54,12 +54,21 @@ dependencies = [
 name = "blue-cli"
 version = "0.0.1"
 dependencies = [
+ "blue_config",
  "clap",
  "glob",
  "home",
  "serde",
  "serde_derive",
  "toml",
+]
+
+[[package]]
+name = "blue_config"
+version = "0.0.1"
+dependencies = [
+ "serde",
+ "serde_derive",
 ]
 
 [[package]]
