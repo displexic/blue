@@ -1,6 +1,7 @@
 use blue_cli::commands::bin;
 use blue_cli::commands::bootstrap;
 use blue_cli::commands::check;
+use blue_cli::commands::version;
 use blue_cli::config::Config;
 use clap::{Parser, Subcommand};
 
@@ -12,6 +13,8 @@ enum Commands {
     Bootstrap(bootstrap::Bootstrap),
     /// Checks if the workspace meets specified requirements
     Check(check::Check),
+    /// Gets the currently installed version of Blue
+    Version(version::Version),
 }
 
 #[derive(Parser, Debug)]
@@ -48,12 +51,14 @@ fn main() {
         Some(Commands::Bin(_command)) => {
             bin::run();
         }
-
         Some(Commands::Bootstrap(_command)) => {
             bootstrap::run();
         }
         Some(Commands::Check(command)) => {
             check::run(command, require_config(&config));
+        }
+        Some(Commands::Version(_command)) => {
+            version::run();
         }
         None => {
             println!("No command specified");
