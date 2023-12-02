@@ -24,7 +24,7 @@ wget -qO- https://blue.slekup.com/install.sh | sh -
 
 ## Crates.io
 
-If you would like to easy build the source code yourself, installing Blue from [crates.io](https://crates.io/crates/blue-cli) will not include the pre-built binaries.
+If you would like to build the source code yourself, installing Blue from [crates.io](https://crates.io/crates/blue-cli) will not include the pre-built binaries.
 
 ```bash
 cargo install blue-cli
