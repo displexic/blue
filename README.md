@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Logo" height="128" width="128" src=".github/blue.png"/>
+  <img alt="Logo" height="128" width="128" src="https://github.com/slekup/blue/blob/main/.github/blue.png"/>
 </div>
 
 <h1 align="center">Blue</h1>
@@ -56,11 +56,11 @@ Visit [blue.slekup.com](https://blue.slekup.com) to get started with Blue.
 
 ## Contributing
 
-We welcome contributions from everyone! Please read our [Contributing Guidelines](./CONTRIBUTING.md) for more details.
+We welcome contributions from everyone! Please read our [Contributing Guidelines](https://github.com/slekup/blue/blob/main/CONTRIBUTING.md) for more details.
 
 ## License
 
-This project is licensed under the [GPL-3.0](./LICENSE) license.
+This project is licensed under the [GPL-3.0](https://github.com/slekup/blue/blob/main/LICENSE) license.
 
 ## Contact
 
@@ -68,6 +68,6 @@ If you have any questions or need further assistance, feel free to contact the p
 
 ## Reference
 
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
-- [Changelog](./CHANGELOG.md)
-- [Contributing](./CONTRIBUTING.md)
+- [Code of Conduct](https://github.com/slekup/blue/blob/ma/CODE_OF_CONDUCT.md)
+- [Changelog](https://github.com/slekup/blue/blob/main/CHANGELOG.md)
+- [Contributing](https://github.com/slekup/blue/blog/main/CONTRIBUTING.md)

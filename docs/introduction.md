@@ -55,21 +55,13 @@ Improve the DX (Developer Experience) of your workspace. Blue can help you with:
 - **Reusability:** Create reusable workspace and project templates and publish them to GitHub.
 - **Analytics:** Gain valuable insight into your workspace.
 
-## Getting Started
-
-::: danger Important
-This project is still in development, don't expect any of the features to work. I (Slekup) also don't have a macOS device to test on, so macOS support is not guaranteed. If you want to help with macOS support, that would be greatly appreciated.
-:::
-
-Visit [blue.slekup.com](https://blue.slekup.com) to get started with Blue.
-
 ## Contributing
 
-We welcome contributions from everyone! Please read our [Contributing Guidelines](./CONTRIBUTING.md) for more details.
+We welcome contributions from everyone! Please read our [Contributing Guidelines](https://github.com/slekup/blue/blob/main/CONTRIBUTING.md) for more details.
 
 ## License
 
-This project is licensed under the [GPL-3.0](./LICENSE) license.
+This project is licensed under the [GPL-3.0](https://github.com/slekup/blue/blob/main/LICENSE) license.
 
 ## Contact
 
@@ -77,6 +69,6 @@ If you have any questions or need further assistance, feel free to contact the p
 
 ## Reference
 
-- [Code of Conduct](./CODE_OF_CONDUCT.md)
-- [Changelog](./CHANGELOG.md)
-- [Contributing](./CONTRIBUTING.md)
+- [Code of Conduct](https://github.com/slekup/blue/blob/main/CODE_OF_CONDUCT.md)
+- [Changelog](https://github.com/slekup/blue/blob/main/CHANGELOG.md)
+- [Contributing](https://github.com/slekup/blue/blob/main/CONTRIBUTING.md)
