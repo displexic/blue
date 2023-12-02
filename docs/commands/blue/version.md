@@ -1,9 +1,9 @@
 # blue version
 
-Alias: ``
+Gets the currently installed version of Blue
 
-## Environment
+## Usage
 
-## Options
-
-## blue.toml settings
+```bash
+blue version
+```
