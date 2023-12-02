@@ -1,3 +1,4 @@
+use blue_cli::commands::bin;
 use blue_cli::commands::bootstrap;
 use blue_cli::commands::check;
 use blue_cli::config::Config;
@@ -5,10 +6,12 @@ use clap::{Parser, Subcommand};
 
 #[derive(Subcommand, Debug)]
 enum Commands {
-    /// Checks if the workspace meets specified requirements
-    Check(check::Check),
+    /// Returns the path to the binary
+    Bin(bin::Bin),
     /// Installs Blue into the user's system
     Bootstrap(bootstrap::Bootstrap),
+    /// Checks if the workspace meets specified requirements
+    Check(check::Check),
 }
 
 #[derive(Parser, Debug)]
@@ -40,12 +43,17 @@ fn main() {
     };
 
     let cli = Cli::parse();
+
     match &cli.command {
-        Some(Commands::Check(command)) => {
-            check::run(command, require_config(&config));
+        Some(Commands::Bin(_command)) => {
+            bin::run();
         }
+
         Some(Commands::Bootstrap(_command)) => {
             bootstrap::run();
+        }
+        Some(Commands::Check(command)) => {
+            check::run(command, require_config(&config));
         }
         None => {
             println!("No command specified");
