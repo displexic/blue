@@ -26,6 +26,7 @@ export default defineConfig({
       {
         text: 'Commands',
         items: [
+          { text: 'Argument Syntax', link: '/commands/argument-syntax' },
           {
             collapsed: true,
             text: 'Blue',
