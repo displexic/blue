@@ -1,9 +1,9 @@
 # blue bin
 
-Alias: ``
+Returns the path to the binary.
 
-## Environment
+## Usage
 
-## Options
-
-## blue.toml settings
+```bash
+blue bin
+```
