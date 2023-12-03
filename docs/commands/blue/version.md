@@ -1,6 +1,6 @@
 # blue version
 
-Gets the currently installed version of Blue
+Gets the currently installed version of Blue.
 
 ## Usage
 

@@ -68,10 +68,18 @@
   --vp-c-danger-2: var(--vp-c-red-2);
   --vp-c-danger-3: var(--vp-c-red-3);
   --vp-c-danger-soft: var(--vp-c-red-soft);
+
+  --vp-code-color: #000;
+  --vp-code-link-color: #000;
+  --vp-code-link-hover-color: var(--vp-c-brand-1);
 }
 
 .dark {
   --vp-c-brand-1: #00ffff;
+
+  --vp-code-color: #fff;
+  --vp-code-link-color: #fff;
+  --vp-code-link-hover-color: var(--vp-c-brand-1);
 }
 
 /**
@@ -144,4 +152,8 @@
 .main .name {
   font-size: 4rem;
   line-height: 7rem;
+}
+
+a:has(code):hover > code {
+  color: var(--vp-code-link-hover-color) !important;
 }

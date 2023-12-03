@@ -25,7 +25,13 @@ export default defineConfig({
       },
       {
         text: 'Configuration',
-        items: [{ text: 'blue.toml', link: '/configuration/blue-toml' }],
+        items: [
+          { text: 'blue.toml', link: '/configuration/blue-toml' },
+          {
+            text: 'blue-project.toml',
+            link: '/configuration/blue-project-toml',
+          },
+        ],
       },
       {
         text: 'Commands',

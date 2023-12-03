@@ -1,6 +1,8 @@
 # blue setup
 
-Alias: ``
+Sets up an environment.
+
+Alias: `s`
 
 ## Environment
 
