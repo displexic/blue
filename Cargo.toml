@@ -1,5 +1,5 @@
 [workspace]
-members = [".", "crates/blue-config"]
+members = [".", "crates/blue-config", "crates/blue-git"]
 
 [workspace.package]
 version = "0.0.1"
@@ -27,6 +27,7 @@ authors.workspace = true
 
 [workspace.dependencies]
 blue_config = { path = "crates/blue-config" }
+blue_git = { path = "crates/blue-git" }
 
 
 [[bin]]
@@ -40,6 +41,7 @@ codegen-units = 1
 
 [dependencies]
 blue_config = { workspace = true }
+blue_git = { workspace = true }
 clap = { version = "4.4.8", features = ["derive"] }
 serde = { version = "1.0.193", features = ["derive"] }
 serde_derive = "1.0.193"

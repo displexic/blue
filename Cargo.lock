@@ -55,6 +55,7 @@ name = "blue-cli"
 version = "0.0.1"
 dependencies = [
  "blue_config",
+ "blue_git",
  "clap",
  "glob",
  "home",
@@ -70,6 +71,10 @@ dependencies = [
  "serde",
  "serde_derive",
 ]
+
+[[package]]
+name = "blue_git"
+version = "0.0.1"
 
 [[package]]
 name = "clap"
