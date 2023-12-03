@@ -1,9 +1,20 @@
 # blue clean
 
-Alias: ``
+Cleans up temporary files and directories.
 
-## Environment
+::: danger Danger
+This command will delete files and directories without confirmation.
+:::
 
-## Options
+## Usage
+
+```bash
+blue clean [target...]
+```
 
 ## blue.toml settings
+
+```toml
+[workspace]
+clean_targets = ["target", "dist", ".cache"]
+```

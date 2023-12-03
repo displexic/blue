@@ -24,6 +24,10 @@ export default defineConfig({
         ],
       },
       {
+        text: 'Configuration',
+        items: [{ text: 'blue.toml', link: '/configuration/blue-toml' }],
+      },
+      {
         text: 'Commands',
         items: [
           { text: 'Argument Syntax', link: '/commands/argument-syntax' },
