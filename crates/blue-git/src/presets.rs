@@ -3,10 +3,10 @@
 //! Instead of each configuration being an object with the properties `level` `rule` and `value`,
 //! the configuration is a tuple of `(level, rule, value)`.
 
-use blue_config::git::commit_check::{Case, Level, PresetCommitCheckRules, Rule};
+use blue_config::git::commit_check::{Case, Level, RequiredCommitCheckRules, Rule};
 
-pub fn default() -> PresetCommitCheckRules {
-    PresetCommitCheckRules {
+pub fn default() -> RequiredCommitCheckRules {
+    RequiredCommitCheckRules {
         body_full_stop: (Level::Disabled, Rule::Never),
         body_leading_blank: (Level::Warning, Rule::Always),
         body_empty: (Level::Disabled, Rule::Never),

@@ -75,6 +75,9 @@ dependencies = [
 [[package]]
 name = "blue_git"
 version = "0.0.1"
+dependencies = [
+ "blue_config",
+]
 
 [[package]]
 name = "clap"

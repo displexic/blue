@@ -45,7 +45,7 @@ pub enum Case {
 }
 
 #[derive(serde::Deserialize)]
-pub struct CheckCommitConfig {
+pub struct CommitCheckConfig {
     pub preset: Option<String>,
     pub rules: Option<CommitCheckRules>,
 }
@@ -88,18 +88,18 @@ pub type CommitCheckRules = CommitCheckRulesBase<
     Option<StringListRule>,
 >;
 
-type PresetDefaultRule = (Level, Rule);
-type PresetNumberRule = (Level, Rule, usize);
-type PresetCaseRule = (Level, Rule, Vec<Case>);
-type PresetStringRule = (Level, Rule, String);
-type PresetStringListRule = (Level, Rule, Vec<String>);
+type RequiredDefaultRule = (Level, Rule);
+type RequiredNumberRule = (Level, Rule, usize);
+type RequiredCaseRule = (Level, Rule, Vec<Case>);
+type RequiredStringRule = (Level, Rule, String);
+type RequiredStringListRule = (Level, Rule, Vec<String>);
 
-pub type PresetCommitCheckRules = CommitCheckRulesBase<
-    PresetDefaultRule,
-    PresetNumberRule,
-    PresetCaseRule,
-    PresetStringRule,
-    PresetStringListRule,
+pub type RequiredCommitCheckRules = CommitCheckRulesBase<
+    RequiredDefaultRule,
+    RequiredNumberRule,
+    RequiredCaseRule,
+    RequiredStringRule,
+    RequiredStringListRule,
 >;
 
 #[derive(serde::Deserialize)]

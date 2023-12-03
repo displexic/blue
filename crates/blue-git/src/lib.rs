@@ -1,3 +1,2 @@
-pub fn commit_check() {
-    println!("checking commit from git lib")
-}
+mod commit_check;
+mod presets;

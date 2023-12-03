@@ -76,7 +76,7 @@ fn main() {
             clean::run(command, require_config(&config));
         }
         Some(Commands::Git(git_command)) => match &git_command.commands {
-            git::GitCommands::CheckCommit(command) => {
+            git::GitCommands::CommitCheck(command) => {
                 git::commit_check::run(&command, require_config(&config));
             }
         },

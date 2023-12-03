@@ -1,6 +1,6 @@
 use clap::{Args, Subcommand};
 
-use super::commit_check::CheckCommit;
+use super::commit_check::CommitCheck;
 
 #[derive(Args, Debug)]
 pub struct GitArgs {
@@ -13,5 +13,5 @@ pub struct GitArgs {
 pub enum GitCommands {
     /// Checks if the commit message is valid
     #[clap(name = "commit-check")]
-    CheckCommit(CheckCommit),
+    CommitCheck(CommitCheck),
 }

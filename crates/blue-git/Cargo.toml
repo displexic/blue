@@ -9,3 +9,4 @@ homepage.workspace = true
 authors.workspace = true
 
 [dependencies]
+blue_config = { workspace = true }
