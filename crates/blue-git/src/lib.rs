@@ -1,2 +1,2 @@
-mod commit_check;
+pub mod commit_check;
 mod presets;

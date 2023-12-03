@@ -1,4 +1,12 @@
-#[derive(serde::Deserialize)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize, Clone)]
+pub enum CommitCheckPresets {
+    #[serde(rename = "default")]
+    Default,
+}
+
+#[derive(Serialize, Deserialize, Clone)]
 pub enum Level {
     #[serde(rename = "disabled")]
     Disabled,
@@ -8,7 +16,7 @@ pub enum Level {
     Error,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub enum Rule {
     #[serde(rename = "always")]
     Always,
@@ -16,7 +24,7 @@ pub enum Rule {
     Never,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub enum Case {
     /// lowercase
     #[serde(rename = "lower-case")]
@@ -44,40 +52,40 @@ pub enum Case {
     Start,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct CommitCheckConfig {
-    pub preset: Option<String>,
+    pub preset: Option<CommitCheckPresets>,
     pub rules: Option<CommitCheckRules>,
 }
 
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct DefaultRule {
-    pub level: Level,
-    pub rule: Rule,
+    pub level: Option<Level>,
+    pub rule: Option<Rule>,
 }
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct NumberRule {
-    pub level: Level,
-    pub rule: Rule,
-    pub value: usize,
+    pub level: Option<Level>,
+    pub rule: Option<Rule>,
+    pub value: Option<usize>,
 }
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct CaseRule {
-    pub level: Level,
-    pub rule: Rule,
-    pub value: Vec<Case>,
+    pub level: Option<Level>,
+    pub rule: Option<Rule>,
+    pub value: Option<Vec<Case>>,
 }
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct StringRule {
-    pub level: Level,
-    pub rule: Rule,
-    pub value: String,
+    pub level: Option<Level>,
+    pub rule: Option<Rule>,
+    pub value: Option<String>,
 }
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct StringListRule {
-    pub level: Level,
-    pub rule: Rule,
-    pub value: Vec<String>,
+    pub level: Option<Level>,
+    pub rule: Option<Rule>,
+    pub value: Option<Vec<String>>,
 }
 
 pub type CommitCheckRules = CommitCheckRulesBase<
@@ -88,11 +96,11 @@ pub type CommitCheckRules = CommitCheckRulesBase<
     Option<StringListRule>,
 >;
 
-type RequiredDefaultRule = (Level, Rule);
-type RequiredNumberRule = (Level, Rule, usize);
-type RequiredCaseRule = (Level, Rule, Vec<Case>);
-type RequiredStringRule = (Level, Rule, String);
-type RequiredStringListRule = (Level, Rule, Vec<String>);
+pub type RequiredDefaultRule = (Level, Rule);
+pub type RequiredNumberRule = (Level, Rule, usize);
+pub type RequiredCaseRule = (Level, Rule, Vec<Case>);
+pub type RequiredStringRule = (Level, Rule, String);
+pub type RequiredStringListRule = (Level, Rule, Vec<String>);
 
 pub type RequiredCommitCheckRules = CommitCheckRulesBase<
     RequiredDefaultRule,
@@ -102,7 +110,7 @@ pub type RequiredCommitCheckRules = CommitCheckRulesBase<
     RequiredStringListRule,
 >;
 
-#[derive(serde::Deserialize)]
+#[derive(Serialize, Deserialize, Clone)]
 pub struct CommitCheckRulesBase<DR, NR, CR, SR, SLR> {
     /// Body must end with a full stop
     pub body_full_stop: DR,
