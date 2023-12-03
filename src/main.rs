@@ -52,8 +52,9 @@ fn main() {
 
     let config_contents: Option<String> = std::fs::read_to_string(config_filename).ok();
     let config: Option<Config> = match config_contents {
-        Some(contents) => toml::from_str(&contents).unwrap_or_else(|_| {
+        Some(contents) => toml::from_str(&contents).unwrap_or_else(|err| {
             eprintln!("{} is not valid toml", config_filename);
+            eprintln!("{}", err);
             std::process::exit(1);
         }),
         None => None,
@@ -74,9 +75,9 @@ fn main() {
         Some(Commands::Clean(command)) => {
             clean::run(command, require_config(&config));
         }
-        Some(Commands::Git(command)) => match &command.commands {
-            git::GitCommands::CheckCommit(_command) => {
-                git::check::run();
+        Some(Commands::Git(git_command)) => match &git_command.commands {
+            git::GitCommands::CheckCommit(command) => {
+                git::commit_check::run(&command, require_config(&config));
             }
         },
         Some(Commands::Version(_command)) => {

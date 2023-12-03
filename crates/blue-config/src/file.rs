@@ -1,3 +1,5 @@
+use crate::git::GitConfig;
+
 #[derive(serde::Deserialize)]
 pub struct RootWorkspaceConfig {
     pub name: Option<String>,
@@ -46,9 +48,10 @@ pub struct EnvConfig {
 
 #[derive(serde::Deserialize)]
 pub struct Config {
-    pub workspace: Option<RootWorkspaceConfig>,
-    pub javascript: Option<JavaScriptConfig>,
-    pub rust: Option<RustConfig>,
     pub docker: Option<DockerConfig>,
     pub env: Option<EnvConfig>,
+    pub git: Option<GitConfig>,
+    pub javascript: Option<JavaScriptConfig>,
+    pub rust: Option<RustConfig>,
+    pub workspace: Option<RootWorkspaceConfig>,
 }

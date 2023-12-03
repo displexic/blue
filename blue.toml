@@ -1,2 +1,38 @@
+# See https://blue.slekup.com/configuration/blue-toml for more information.
+
 [workspace]
 clean_files = ["tmp"]
+
+
+[git.commit_check]
+preset = "default"
+[git.commit_check.rules]
+header_case = { level = "error", rule = "always", value = ["lower-case"] }
+header_full_stop = { level = "error", rule = "never" }
+header_max_length = { level = "error", rule = "always", value = 72 }
+header_min_length = { level = "error", rule = "always", value = 3 }
+references_empty = { level = "disabled", rule = "never" }
+scope_case = { level = "error", rule = "always", value = ["lower-case"] }
+scope_empty = { level = "error", rule = "never" }
+scope_max_length = { level = "error", rule = "always", value = 20 }
+scope_min_length = { level = "error", rule = "always", value = 2 }
+subject_empty = { level = "error", rule = "never" }
+subject_max_length = { level = "error", rule = "always", value = 50 }
+subject_min_length = { level = "error", rule = "always", value = 3 }
+subject_exclamation_mark = { level = "error", rule = "never" }
+type_case = { level = "error", rule = "always", value = ["lower-case"] }
+type_empty = ["error", "never"]
+type_enum = { level = "error", rule = "always", value = [
+  "build",    # Build System - Changes that affect the build system or external dependencies.
+  "chore",    # Miscellaneous Chores - Regular code maintenance.
+  "ci",       # Continous Integration - Changes to our CI configuration files and scripts.
+  "docs",     # Documentation - Documentation only changes.
+  "feat",     # Feature - A new feature.
+  "fix",      # Bug Fixes - A bug fix.
+  "perf",     # Performance Improvement - A code change that improves performance.
+  "refactor", # Code Refactoring - A code change that neither fixes a bug nor adds a feature.
+  "revert",   # Reverts - Reverts a previous commit.
+  "style",    # Styles - Changes that do not affect code meaning (white-space, formatting, missing semi-colons, etc).
+  "test",     # Tests - Adding missing tests or correcting existing tests.
+] }
+type_max_length = { level = "error", rule = "always", value = 10 }
