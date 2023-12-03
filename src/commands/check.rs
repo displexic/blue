@@ -2,13 +2,13 @@ use clap::Args;
 
 use blue_config::Config;
 #[derive(Args, Debug)]
-pub struct Check {
+pub struct CheckArgs {
     /// The environment to check
     #[arg(short = 'e', long = "env")]
     env: Option<String>,
 }
 
-pub fn run(command: &Check, config: &Config) {
+pub fn run(command: &CheckArgs, config: &Config) {
     println!("Checking environment: {:?}", command.env);
     println!(
         "Workspace Name: {:?}",

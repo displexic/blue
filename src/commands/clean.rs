@@ -6,12 +6,12 @@ use blue_config::Config;
 
 #[derive(Args, Debug)]
 
-pub struct CleanOptions {
+pub struct CleanArgs {
     /// Files and directories to clean
     files: Option<Vec<String>>,
 }
 
-pub fn run(command: &CleanOptions, config: &Config) {
+pub fn run(command: &CleanArgs, config: &Config) {
     let mut files: Vec<String> = vec![];
 
     if let Some(config_clean_files) = &config.workspace.as_ref().unwrap().clean_files {

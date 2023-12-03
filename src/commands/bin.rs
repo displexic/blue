@@ -3,7 +3,7 @@ use std::env;
 use clap::Args;
 
 #[derive(Args, Debug)]
-pub struct Bin {}
+pub struct BinArgs {}
 
 pub fn run() {
     let current_path = env::current_exe().unwrap_or_else(|_| {

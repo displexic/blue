@@ -1,6 +1,6 @@
 [package]
-name = "blue_config"
-description = "Handles configuration for Blue"
+name = "blue_git"
+description = "Git related utilities for Blue"
 version.workspace = true
 license.workspace = true
 edition.workspace = true
@@ -9,5 +9,3 @@ homepage.workspace = true
 authors.workspace = true
 
 [dependencies]
-serde = { version = "1.0.193", features = ["derive"] }
-serde_derive = "1.0.193"

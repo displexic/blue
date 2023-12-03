@@ -2,6 +2,7 @@ use blue_cli::commands::bin;
 use blue_cli::commands::bootstrap;
 use blue_cli::commands::check;
 use blue_cli::commands::clean;
+use blue_cli::commands::git;
 use blue_cli::commands::version;
 use blue_config::Config;
 use clap::{Parser, Subcommand};
@@ -23,21 +24,17 @@ struct Cli {
 #[derive(Subcommand, Debug)]
 enum Commands {
     /// Returns the path to the binary
-    Bin(bin::Bin),
+    Bin(bin::BinArgs),
     /// Installs Blue into the user's system
-    Bootstrap(bootstrap::Bootstrap),
+    Bootstrap(bootstrap::BootstrapArgs),
     /// Checks if the workspace meets specified requirements
-    Check(check::Check),
+    Check(check::CheckArgs),
     /// Cleans up temporary files and directories
-    Clean(clean::CleanOptions),
+    Clean(clean::CleanArgs),
+    // Git commands
+    Git(git::GitArgs),
     /// Gets the currently installed version of Blue
-    Version(version::Version),
-    /// Test command
-    Test {
-        /// lists test values
-        #[arg(short, long)]
-        list: bool,
-    },
+    Version(version::VersionArgs),
 }
 
 fn require_config(config: &Option<Config>) -> &Config {
@@ -77,15 +74,13 @@ fn main() {
         Some(Commands::Clean(command)) => {
             clean::run(command, require_config(&config));
         }
+        Some(Commands::Git(command)) => match &command.commands {
+            git::GitCommands::CheckCommit(_command) => {
+                git::check::run();
+            }
+        },
         Some(Commands::Version(_command)) => {
             version::run();
-        }
-        Some(Commands::Test { list }) => {
-            if *list {
-                println!("Test list");
-            } else {
-                println!("Test");
-            }
         }
         None => {
             println!("No command specified");

@@ -3,7 +3,7 @@ use std::env;
 use clap::Args;
 
 #[derive(Args, Debug)]
-pub struct Version {}
+pub struct VersionArgs {}
 
 pub fn run() {
     const VERSION: &str = env!("CARGO_PKG_VERSION");
