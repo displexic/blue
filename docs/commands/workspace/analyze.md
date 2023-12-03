@@ -1,6 +1,8 @@
 # blue analyze
 
-Alias: ``
+Get a report of the current workspace.
+
+Alias: `analyse`
 
 ## Environment
 

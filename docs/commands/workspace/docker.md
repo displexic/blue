@@ -1,5 +1,7 @@
 # blue docker
 
+Manage Docker containers and images.
+
 Alias: ``
 
 ## Environment

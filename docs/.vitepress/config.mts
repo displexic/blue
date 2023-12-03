@@ -63,8 +63,10 @@ export default defineConfig({
               { text: 'blue docker', link: '/commands/workspace/docker' },
               { text: 'blue fix', link: '/commands/workspace/fix' },
               { text: 'blue init', link: '/commands/workspace/init' },
-              { text: 'blue run', link: '/commands/workspace/run' },
+              { text: 'blue remove', link: '/commands/workspace/remove' },
               { text: 'blue setup', link: '/commands/workspace/setup' },
+              { text: 'blue run', link: '/commands/workspace/run' },
+              { text: 'blue update', link: '/commands/workspace/update' },
             ],
           },
           {
