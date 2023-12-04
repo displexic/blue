@@ -25,7 +25,6 @@ pub fn header_case<'a>(
                 format!("Header must not be any of the following cases: {:?}", value),
             ));
         }
-
         _ => Ok(()),
     }
 }

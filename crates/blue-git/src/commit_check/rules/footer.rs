@@ -7,12 +7,12 @@ pub fn footer_leading_blank<'a>(
     let (level, rule) = &rules.footer_leading_blank;
     match (level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if footer.len() > 0 && !footer[footer.len()].is_empty() =>
+            if footer.len() > 0 && !footer[footer.len() - 1].is_empty() =>
         {
             Err((level, "Footer must have a leading blank line.".to_string()))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if footer.len() > 0 && footer[footer.len()].is_empty() =>
+            if footer.len() > 0 && footer[footer.len() - 1].is_empty() =>
         {
             Err((
                 level,

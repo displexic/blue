@@ -36,6 +36,16 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
         },
     };
 
+    handle_rule_check(rules::body::body_full_stop(&commit.body, &config));
+    handle_rule_check(rules::body::body_leading_blank(&commit.body, &config));
+    handle_rule_check(rules::body::body_empty(&commit.body, &config));
+    handle_rule_check(rules::body::body_max_length(&commit.body, &config));
+    handle_rule_check(rules::body::body_min_length(&commit.body, &config));
+    handle_rule_check(rules::body::body_max_line_length(&commit.body, &config));
+    handle_rule_check(rules::body::body_min_line_length(&commit.body, &config));
+    handle_rule_check(rules::body::body_max_lines(&commit.body, &config));
+    handle_rule_check(rules::body::body_case(&commit.body, &config));
+
     handle_rule_check(rules::commit_type::type_enum(&commit.header, &config));
     handle_rule_check(rules::commit_type::type_case(&commit.header, &config));
     handle_rule_check(rules::commit_type::type_empty(&commit.header, &config));
@@ -66,24 +76,32 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     handle_rule_check(rules::subject::subject_max_length(&commit.header, &config));
     handle_rule_check(rules::subject::subject_min_length(&commit.header, &config));
 
+    println!("");
+
     if !results.0.is_empty() {
-        eprintln!(
-            "\n{} {}\n",
+        println!(
+            "{} {}",
             " WARNING ".on_yellow().bold(),
             "Commit message contains warnings".yellow()
         );
-    } else if !results.1.is_empty() {
+    }
+
+    if !results.1.is_empty() {
         eprintln!(
-            "\n{} {}\n",
+            "{} {}",
             " ERROR ".on_red().bold(),
             "Commit message failed checks".red()
         );
         std::process::exit(1);
-    } else {
+    }
+
+    if results.0.is_empty() && results.0.is_empty() {
         eprintln!(
-            "\n{} {}\n",
+            "{} {}",
             " SUCCESS ".on_green().bold(),
             "Commit message passed checks".green()
         );
     }
+
+    println!("");
 }
