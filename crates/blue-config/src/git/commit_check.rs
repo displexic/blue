@@ -24,7 +24,7 @@ pub enum Rule {
     Never,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum Case {
     /// lowercase
     #[serde(rename = "lower-case")]
@@ -50,6 +50,34 @@ pub enum Case {
     /// Start Case
     #[serde(rename = "start-case")]
     Start,
+}
+
+impl Case {
+    pub fn to_string(&self) -> &'static str {
+        match self {
+            Case::Lower => "lower-case",
+            Case::Upper => "upper-case",
+            Case::Camel => "camel-case",
+            Case::Kebab => "kebab-case",
+            Case::Pascal => "pascal-case",
+            Case::Sentence => "sentence-case",
+            Case::Snake => "snake",
+            Case::Start => "start-case",
+        }
+    }
+
+    pub fn compare(&self, text: &String) -> bool {
+        match self {
+            Case::Lower => &text.to_lowercase() == text,
+            Case::Upper => &text.to_uppercase() == text,
+            Case::Camel => &text.to_lowercase() == text,
+            Case::Kebab => &text.to_lowercase() == text,
+            Case::Pascal => &text.to_lowercase() == text,
+            Case::Sentence => &text.to_lowercase() == text,
+            Case::Snake => &text.to_lowercase() == text,
+            Case::Start => &text.to_lowercase() == text,
+        }
+    }
 }
 
 #[derive(Serialize, Deserialize, Clone)]

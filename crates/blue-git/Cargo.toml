@@ -10,3 +10,4 @@ authors.workspace = true
 
 [dependencies]
 blue_config = { workspace = true }
+colored = { workspace = true }

@@ -1,5 +1,6 @@
 #[derive(Debug)]
 pub struct CommitHeader {
+    pub content: String,
     pub commit_type: String,
     pub scope: String,
     pub subject: String,
@@ -74,6 +75,7 @@ fn parse_header(header: String) -> CommitHeader {
     let subject = commit_split[1].trim().to_string();
 
     CommitHeader {
+        content: header,
         commit_type,
         scope,
         subject,
