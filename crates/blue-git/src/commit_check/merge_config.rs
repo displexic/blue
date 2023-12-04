@@ -2,12 +2,13 @@
 //! This should not be run if the number of rules in the configuration is 0.
 //! This is also only run when a preset is provided.
 
-use crate::presets;
 use blue_config::git::commit_check::{
     CaseRule, CommitCheckPresets, CommitCheckRules, DefaultRule, NumberRule, RequiredCaseRule,
     RequiredCommitCheckRules, RequiredDefaultRule, RequiredNumberRule, RequiredStringListRule,
     RequiredStringRule, StringListRule, StringRule,
 };
+
+use super::presets;
 
 fn get_preset(preset: &CommitCheckPresets) -> RequiredCommitCheckRules {
     match preset {

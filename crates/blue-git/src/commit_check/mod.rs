@@ -4,6 +4,7 @@ use colored::Colorize;
 pub mod find_case;
 mod merge_config;
 mod parse_commit;
+mod presets;
 mod rules;
 
 use parse_commit::Commit;
@@ -64,6 +65,8 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     handle_rule_check(rules::header::header_max_length(&commit.header, &config));
     handle_rule_check(rules::header::header_min_length(&commit.header, &config));
 
+    handle_rule_check(rules::references_empty(&commit_message, &config));
+
     handle_rule_check(rules::scope::scope_enum(&commit.header, &config));
     handle_rule_check(rules::scope::scope_case(&commit.header, &config));
     handle_rule_check(rules::scope::scope_empty(&commit.header, &config));
@@ -75,6 +78,9 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     handle_rule_check(rules::subject::subject_full_stop(&commit.header, &config));
     handle_rule_check(rules::subject::subject_max_length(&commit.header, &config));
     handle_rule_check(rules::subject::subject_min_length(&commit.header, &config));
+
+    handle_rule_check(rules::signed_off_by(&commit_message, &config));
+    handle_rule_check(rules::trailer(&mut commit_message.clone(), &config));
 
     println!("");
 
