@@ -9,7 +9,7 @@ pub fn scope_enum<'a>(
     let (level, rule, value) = &rules.scope_enum;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if !value.contains(&header.scope) =>
+            if !header.scope.is_empty() && !value.contains(&header.scope) =>
         {
             Err((
                 level,
@@ -17,7 +17,7 @@ pub fn scope_enum<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if value.contains(&header.scope) =>
+            if !header.scope.is_empty() && value.contains(&header.scope) =>
         {
             Err((
                 level,
@@ -35,7 +35,7 @@ pub fn scope_case<'a>(
     let (level, rule, value) = &rules.scope_case;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if !find_case(&header.scope, value) =>
+            if !header.scope.is_empty() && !find_case(&header.scope, value) =>
         {
             Err((
                 level,
@@ -43,7 +43,7 @@ pub fn scope_case<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if find_case(&header.scope, value) =>
+            if !header.scope.is_empty() && find_case(&header.scope, value) =>
         {
             Err((
                 level,
@@ -79,7 +79,7 @@ pub fn scope_max_length<'a>(
     let (level, rule, value) = &rules.scope_max_length;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if &header.scope.len() > &value =>
+            if !header.scope.is_empty() && &header.scope.len() > &value =>
         {
             Err((
                 level,
@@ -87,7 +87,7 @@ pub fn scope_max_length<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if &header.scope.len() <= &value =>
+            if !header.scope.is_empty() && &header.scope.len() <= &value =>
         {
             Err((
                 level,
@@ -105,7 +105,7 @@ pub fn scope_min_length<'a>(
     let (level, rule, value) = &rules.scope_min_length;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if &header.scope.len() < &value =>
+            if !header.scope.is_empty() && &header.scope.len() < &value =>
         {
             Err((
                 level,
@@ -113,7 +113,7 @@ pub fn scope_min_length<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if &header.scope.len() >= &value =>
+            if !header.scope.is_empty() && &header.scope.len() >= &value =>
         {
             Err((
                 level,

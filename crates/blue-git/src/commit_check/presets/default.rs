@@ -37,7 +37,7 @@ pub fn default() -> RequiredCommitCheckRules {
 
         subject_case: (
             Level::Error,
-            Rule::Never,
+            Rule::Always,
             vec![Case::Sentence, Case::Start, Case::Pascal, Case::Upper],
         ),
         subject_empty: (Level::Error, Rule::Never),

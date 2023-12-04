@@ -63,14 +63,14 @@ pub fn type_empty<'a>(
     let (level, rule) = &rules.type_empty;
     match (level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if header.commit_type.is_empty() =>
-        {
-            Err((level, "Type must not be empty".to_string()))
-        }
-        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
             if !header.commit_type.is_empty() =>
         {
             Err((level, "Type must be empty".to_string()))
+        }
+        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
+            if header.commit_type.is_empty() =>
+        {
+            Err((level, "Type must not be empty".to_string()))
         }
         _ => Ok(()),
     }

@@ -6,7 +6,7 @@ pub enum CommitCheckPresets {
     Default,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum Level {
     #[serde(rename = "disabled")]
     Disabled,
@@ -16,7 +16,7 @@ pub enum Level {
     Error,
 }
 
-#[derive(Serialize, Deserialize, Clone)]
+#[derive(Serialize, Deserialize, Clone, Debug)]
 pub enum Rule {
     #[serde(rename = "always")]
     Always,

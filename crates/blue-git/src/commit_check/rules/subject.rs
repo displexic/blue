@@ -13,7 +13,7 @@ pub fn subject_case<'a>(
         {
             return Err((
                 level,
-                format!("Header must be in one of the following cases: {:?}", value),
+                format!("Subject must be in one of the following cases: {:?}", value),
             ));
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
@@ -21,7 +21,10 @@ pub fn subject_case<'a>(
         {
             return Err((
                 level,
-                format!("Header must not be any of the following cases: {:?}", value),
+                format!(
+                    "Subject must not be any of the following cases: {:?}",
+                    value
+                ),
             ));
         }
 
@@ -36,14 +39,14 @@ pub fn subject_empty<'a>(
     let (level, rule) = &rules.subject_empty;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if header.subject.is_empty() =>
-        {
-            return Err((level, "Header must not be empty.".to_string()));
-        }
-        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
             if !header.subject.is_empty() =>
         {
-            return Err((level, "Header must be empty.".to_string()));
+            return Err((level, "Subject must be empty.".to_string()));
+        }
+        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
+            if header.subject.is_empty() =>
+        {
+            return Err((level, "Subject must not be empty.".to_string()));
         }
         _ => Ok(()),
     }
@@ -58,7 +61,7 @@ pub fn subject_full_stop<'a>(
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
             if !header.subject.ends_with('.') =>
         {
-            return Err((level, "Header must end with a full stop (.)".to_string()));
+            return Err((level, "Subject must end with a full stop (.)".to_string()));
         }
 
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
@@ -66,7 +69,7 @@ pub fn subject_full_stop<'a>(
         {
             return Err((
                 level,
-                "Header must not end with a full stop (.)".to_string(),
+                "Subject must not end with a full stop (.)".to_string(),
             ));
         }
 
@@ -86,7 +89,7 @@ pub fn subject_max_length<'a>(
             Err((
                 level,
                 format!(
-                    "Header must be less than or equal to {} characters long.",
+                    "Subject must be less than or equal to {} characters long.",
                     value
                 ),
             ))
@@ -96,7 +99,7 @@ pub fn subject_max_length<'a>(
         {
             Err((
                 level,
-                format!("Header must be greater than {} characters long.", value),
+                format!("Subject must be greater than {} characters long.", value),
             ))
         }
         _ => Ok(()),
@@ -115,7 +118,7 @@ pub fn subject_min_length<'a>(
             Err((
                 level,
                 format!(
-                    "Header must be greater than or equal to {} characters long.",
+                    "Subject must be greater than or equal to {} characters long.",
                     value
                 ),
             ))
@@ -125,7 +128,7 @@ pub fn subject_min_length<'a>(
         {
             Err((
                 level,
-                format!("Header must be less than {} characters long.", value),
+                format!("Subject must be less than {} characters long.", value),
             ))
         }
         _ => Ok(()),

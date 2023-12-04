@@ -9,17 +9,18 @@ pub fn header_case<'a>(
     let (level, rule, value) = &rules.header_case;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if !find_case(&header.content, value) =>
+            if !header.content.is_empty() && !find_case(&header.content, value) =>
         {
+            println!("correct");
             return Err((
                 level,
                 format!("Header must be in one of the following cases: {:?}", value),
             ));
         }
-
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if find_case(&header.content, value) =>
+            if !header.content.is_empty() && find_case(&header.content, value) =>
         {
+            println!("Fail");
             return Err((
                 level,
                 format!("Header must not be any of the following cases: {:?}", value),
@@ -36,12 +37,12 @@ pub fn header_full_stop<'a>(
     let (level, rule) = &rules.header_full_stop;
     match (&level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if !header.subject.ends_with('.') =>
+            if !header.content.is_empty() && !header.content.ends_with('.') =>
         {
             Err((level, "Header should end with a full stop.".to_string()))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if header.subject.ends_with('.') =>
+            if !header.content.is_empty() && header.content.ends_with('.') =>
         {
             Err((level, "Header should not end with a full stop.".to_string()))
         }
@@ -56,7 +57,7 @@ pub fn header_max_length<'a>(
     let (level, rule, value) = &rules.header_max_length;
     match (level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if &header.content.len() > value =>
+            if !header.content.is_empty() && &header.content.len() > value =>
         {
             Err((
                 level,
@@ -64,7 +65,7 @@ pub fn header_max_length<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if &header.content.len() <= value =>
+            if !header.content.is_empty() && &header.content.len() <= value =>
         {
             Err((
                 level,
@@ -82,7 +83,7 @@ pub fn header_min_length<'a>(
     let (level, rule, value) = &rules.header_min_length;
     match (level, rule) {
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
-            if &header.content.len() < value =>
+            if !header.content.is_empty() && &header.content.len() < value =>
         {
             Err((
                 level,
@@ -90,7 +91,7 @@ pub fn header_min_length<'a>(
             ))
         }
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
-            if &header.content.len() > value =>
+            if !header.content.is_empty() && &header.content.len() > value =>
         {
             Err((
                 level,
