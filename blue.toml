@@ -19,7 +19,6 @@ scope_min_length = { level = "error", rule = "always", value = 2 }
 subject_empty = { level = "error", rule = "never" }
 subject_max_length = { level = "error", rule = "always", value = 50 }
 subject_min_length = { level = "error", rule = "always", value = 3 }
-subject_exclamation_mark = { level = "error", rule = "never" }
 type_case = { level = "error", rule = "always", value = ["lower-case"] }
 type_empty = ["error", "never"]
 type_enum = { level = "error", rule = "always", value = [

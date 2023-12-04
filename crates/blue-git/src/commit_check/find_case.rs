@@ -1,8 +1,6 @@
 use blue_config::git::commit_check::Case;
 
 pub fn find_case(text: &String, cases: &Vec<Case>) -> bool {
-    let mut passed_cases: Vec<Case> = vec![];
-
     for case in cases {
         match case {
             Case::Lower => {

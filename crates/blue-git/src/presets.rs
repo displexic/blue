@@ -44,7 +44,6 @@ pub fn default() -> RequiredCommitCheckRules {
         subject_full_stop: (Level::Error, Rule::Never),
         subject_max_length: (Level::Error, Rule::Always, 100),
         subject_min_length: (Level::Error, Rule::Always, 10),
-        subject_exclamation: (Level::Disabled, Rule::Never),
 
         type_enum: (
             Level::Error,

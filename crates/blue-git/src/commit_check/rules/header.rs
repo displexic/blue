@@ -8,24 +8,24 @@ pub fn header_case<'a>(
 ) -> Result<(), (&'a Level, String)> {
     let (level, rule, value) = &rules.header_case;
     match (&level, rule) {
-        (Level::Warning, Rule::Always) | (Level::Error, Rule::Always) => {
-            if !find_case(&header.content, value) {
-                return Err((
-                    level,
-                    format!("Header must be in one of the following cases: {:?}", value),
-                ));
-            }
-            Ok(())
+        (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
+            if !find_case(&header.content, value) =>
+        {
+            return Err((
+                level,
+                format!("Header must be in one of the following cases: {:?}", value),
+            ));
         }
-        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never) => {
-            if find_case(&header.content, value) {
-                return Err((
-                    level,
-                    format!("Header must not be any of the following cases: {:?}", value),
-                ));
-            }
-            Ok(())
+
+        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
+            if find_case(&header.content, value) =>
+        {
+            return Err((
+                level,
+                format!("Header must not be any of the following cases: {:?}", value),
+            ));
         }
+
         _ => Ok(()),
     }
 }
@@ -55,8 +55,8 @@ pub fn header_max_length<'a>(
     rules: &'a RequiredCommitCheckRules,
 ) -> Result<(), (&'a Level, String)> {
     let (level, rule, value) = &rules.header_max_length;
-    match (level, rule, value) {
-        (Level::Warning, Rule::Always, _) | (Level::Error, Rule::Always, _)
+    match (level, rule) {
+        (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
             if &header.content.len() > value =>
         {
             Err((
@@ -64,8 +64,8 @@ pub fn header_max_length<'a>(
                 format!("Header must not be more than {} characters long", value),
             ))
         }
-        (Level::Warning, Rule::Never, _) | (Level::Error, Rule::Never, _)
-            if &header.content.len() < value =>
+        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
+            if &header.content.len() <= value =>
         {
             Err((
                 level,
@@ -81,8 +81,8 @@ pub fn header_min_length<'a>(
     rules: &'a RequiredCommitCheckRules,
 ) -> Result<(), (&'a Level, String)> {
     let (level, rule, value) = &rules.header_min_length;
-    match (level, rule, value) {
-        (Level::Warning, Rule::Always, _) | (Level::Error, Rule::Always, _)
+    match (level, rule) {
+        (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
             if &header.content.len() < value =>
         {
             Err((
@@ -90,7 +90,7 @@ pub fn header_min_length<'a>(
                 format!("Header must not be less than {} characters long", value),
             ))
         }
-        (Level::Warning, Rule::Never, _) | (Level::Error, Rule::Never, _)
+        (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
             if &header.content.len() > value =>
         {
             Err((

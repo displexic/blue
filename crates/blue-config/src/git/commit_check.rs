@@ -201,8 +201,6 @@ pub struct CommitCheckRulesBase<DR, NR, CR, SR, SLR> {
     pub subject_max_length: NR,
     /// Subject must be longer than the value
     pub subject_min_length: NR,
-    /// Subject must have an exclamation mark before the : marker
-    pub subject_exclamation: DR,
 
     /// Type must be found in the value
     pub type_enum: SLR,

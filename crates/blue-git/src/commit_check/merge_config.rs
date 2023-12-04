@@ -159,9 +159,6 @@ pub fn merge_preset_with_config(
     config_rules.subject_min_length.map(|subject_min_length| {
         merge_number(&mut merged_config.subject_min_length, subject_min_length)
     });
-    config_rules.subject_exclamation.map(|subject_exclamation| {
-        merge_default(&mut merged_config.subject_exclamation, subject_exclamation)
-    });
 
     config_rules
         .type_enum
