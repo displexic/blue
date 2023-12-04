@@ -9,6 +9,8 @@ mod rules;
 
 use parse_commit::Commit;
 
+use crate::git_hooks::{GitHook, GitHookType};
+
 /// 1. Parse the commit message into the Commit struct.
 /// 2. Merge the preset (if defined) with the user defined config rules.
 /// 3. Run the rules against the commit message.
@@ -110,4 +112,9 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     }
 
     println!("");
+}
+
+pub fn init_git_hooks() {
+    let commit_msg = GitHook::new(GitHookType::CommitMsg, None);
+    commit_msg.create("#!/usr/bin/env sh\n\nmessage=$(cat $1)\nexec blue git commit-check --message \"${message}\"");
 }

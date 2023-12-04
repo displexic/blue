@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+message=$(cat $1)
+exec blue git commit-check --message "${message}"

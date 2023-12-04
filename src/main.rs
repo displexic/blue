@@ -3,6 +3,7 @@ use blue_cli::commands::bootstrap;
 use blue_cli::commands::check;
 use blue_cli::commands::clean;
 use blue_cli::commands::git;
+use blue_cli::commands::setup;
 use blue_cli::commands::version;
 use blue_config::Config;
 use clap::{Parser, Subcommand};
@@ -33,6 +34,8 @@ enum Commands {
     Clean(clean::CleanArgs),
     // Git commands
     Git(git::GitArgs),
+    // Setup the development environment
+    Setup(setup::SetupArgs),
     /// Gets the currently installed version of Blue
     Version(version::VersionArgs),
 }
@@ -80,6 +83,9 @@ fn main() {
                 git::commit_check::run(&command, require_config(&config));
             }
         },
+        Some(Commands::Setup(_command)) => {
+            setup::run();
+        }
         Some(Commands::Version(_command)) => {
             version::run();
         }
