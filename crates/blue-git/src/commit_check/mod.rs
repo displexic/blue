@@ -4,12 +4,12 @@ mod merge_config;
 mod parse_commit;
 mod rules;
 
-use parse_commit::{parse_commit, Commit};
+use parse_commit::Commit;
 
 pub fn run(commit_message: String, config: &CommitCheckConfig) {
-    println!("checking commit: {}", commit_message);
+    let commit = Commit::parse_message(&mut commit_message.clone());
 
-    let commit: Commit = parse_commit(commit_message);
+    println!("commit: {:?}", commit);
 
     let config: RequiredCommitCheckRules = merge_config::merge_preset_with_config(
         config.rules.as_ref().unwrap().clone(),
