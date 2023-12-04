@@ -42,6 +42,13 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     handle_rule_check(rules::commit_type::type_max_length(&commit.header, &config));
     handle_rule_check(rules::commit_type::type_min_length(&commit.header, &config));
 
+    handle_rule_check(rules::footer::footer_leading_blank(&commit.footer, &config));
+    handle_rule_check(rules::footer::footer_empty(&commit.footer, &config));
+    handle_rule_check(rules::footer::footer_max_line_length(
+        &commit.footer,
+        &config,
+    ));
+
     handle_rule_check(rules::header::header_case(&commit.header, &config));
     handle_rule_check(rules::header::header_full_stop(&commit.header, &config));
     handle_rule_check(rules::header::header_max_length(&commit.header, &config));
