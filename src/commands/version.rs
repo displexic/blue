@@ -7,5 +7,5 @@ pub struct VersionArgs {}
 
 pub fn run() {
     const VERSION: &str = env!("CARGO_PKG_VERSION");
-    println!("{}", VERSION);
+    tracing::info!("{}", VERSION);
 }

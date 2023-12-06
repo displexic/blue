@@ -27,7 +27,7 @@ pub fn run(command: &CleanArgs, config: &Config) {
     }
 
     if files.iter().len() == 0 {
-        eprintln!("No files or directories defined in config");
+        tracing::error!("No files or directories defined in config");
         std::process::exit(1);
     }
 
@@ -41,7 +41,7 @@ pub fn run(command: &CleanArgs, config: &Config) {
                         fs::remove_dir_all(path).expect("Failed to remove directory");
                     }
                 }
-                Err(e) => println!("{:?}", e),
+                Err(e) => tracing::error!("{:?}", e),
             }
         }
     }

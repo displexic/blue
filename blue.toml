@@ -1,4 +1,5 @@
 # See https://blue.slekup.com/configuration/blue-toml for more information.
+debug = false
 
 [workspace]
 clean_files = ["tmp"]

@@ -11,7 +11,6 @@ pub fn header_case<'a>(
         (Level::Warning, Rule::Always) | (Level::Error, Rule::Always)
             if !header.content.is_empty() && !find_case(&header.content, value) =>
         {
-            println!("correct");
             return Err((
                 level,
                 format!("Header must be in one of the following cases: {:?}", value),
@@ -20,7 +19,6 @@ pub fn header_case<'a>(
         (Level::Warning, Rule::Never) | (Level::Error, Rule::Never)
             if !header.content.is_empty() && find_case(&header.content, value) =>
         {
-            println!("Fail");
             return Err((
                 level,
                 format!("Header must not be any of the following cases: {:?}", value),

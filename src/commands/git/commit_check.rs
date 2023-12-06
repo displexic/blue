@@ -17,7 +17,7 @@ fn get_git_config(config: &Config) -> &GitConfig {
     match &config.git {
         Some(value) => value,
         None => {
-            eprintln!("No git config found in blue.toml");
+            tracing::error!("No git config found in blue.toml");
             std::process::exit(1);
         }
     }
@@ -27,7 +27,7 @@ fn get_git_check_commit_config(config: &Config) -> &CommitCheckConfig {
     match &get_git_config(config).commit_check {
         Some(value) => value,
         None => {
-            eprintln!("No commit check config found in blue.toml");
+            tracing::error!("No commit check config found in blue.toml");
             std::process::exit(1);
         }
     }
@@ -44,7 +44,7 @@ pub fn run(command: &CommitCheckArgs, config: &Config) {
             // Serialize the struct into JSON
             let config_rule_json = serde_json::to_value(
                 &git_commit_check_config.rules.as_ref().unwrap_or_else(|| {
-                    eprintln!("No commit check rules found in blue.toml");
+                    tracing::error!("No commit check rules found in blue.toml");
                     std::process::exit(1);
                 }),
             )
@@ -57,7 +57,7 @@ pub fn run(command: &CommitCheckArgs, config: &Config) {
             };
 
             if config_rule_count == 0 {
-                eprintln!("No commit check rules found in blue.toml");
+                tracing::error!("No commit check rules found in blue.toml");
                 std::process::exit(1);
             }
 

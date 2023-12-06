@@ -24,7 +24,7 @@ impl Commit {
             .get(0)
             .map(|header_section| header_section.to_string())
             .unwrap_or_else(|| {
-                eprintln!("No header found in commit message");
+                tracing::error!("No header found in commit message");
                 std::process::exit(1);
             });
 
@@ -56,7 +56,7 @@ fn parse_header(header: String) -> CommitHeader {
     let commit_split = header.split(":").collect::<Vec<&str>>();
 
     if commit_split.len() < 2 {
-        eprintln!("Invalid commit header. Required format: <type>([scope]): <subject>");
+        tracing::error!("Invalid commit header. Required format: <type>([scope]): <subject>");
         std::process::exit(1);
     }
 

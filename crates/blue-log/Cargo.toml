@@ -1,0 +1,17 @@
+[package]
+name = "blue_log"
+description = "Logging utilities for Blue"
+version.workspace = true
+license.workspace = true
+edition.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+blue_config = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
+colored = "2.0.4"

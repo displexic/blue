@@ -27,8 +27,8 @@ impl GitHook {
 
     pub fn init(&self) {
         fs::create_dir_all(&self.path).unwrap_or_else(|err| {
-            eprintln!("{}", err);
-            eprintln!("Unable to create directory: {}", self.path);
+            tracing::error!("{}", err);
+            tracing::error!("Unable to create directory: {}", self.path);
             std::process::exit(1);
         });
     }
@@ -44,8 +44,8 @@ impl GitHook {
 
         let file_path = PathBuf::from(format!("{}/{}", self.path, filename));
         fs::write(&file_path, contents).unwrap_or_else(|err| {
-            eprintln!("{}", err);
-            eprintln!("Unable to write file: {}", file_path.display());
+            tracing::error!("{}", err);
+            tracing::error!("Unable to write file: {}", file_path.display());
             std::process::exit(1);
         });
     }

@@ -6,6 +6,7 @@ use blue_cli::commands::git;
 use blue_cli::commands::setup;
 use blue_cli::commands::version;
 use blue_config::Config;
+use blue_log::init_tracing;
 use clap::{Parser, Subcommand};
 
 #[derive(Parser, Debug)]
@@ -44,7 +45,7 @@ fn require_config(config: &Option<Config>) -> &Config {
     match config {
         Some(config) => config,
         None => {
-            println!("No blue.toml found in current directory");
+            tracing::error!("No blue.toml found in current directory");
             std::process::exit(1);
         }
     }
@@ -56,12 +57,15 @@ fn main() {
     let config_contents: Option<String> = std::fs::read_to_string(config_filename).ok();
     let config: Option<Config> = match config_contents {
         Some(contents) => toml::from_str(&contents).unwrap_or_else(|err| {
-            eprintln!("{} is not valid toml", config_filename);
-            eprintln!("{}", err);
+            tracing::error!("{} is not valid toml", config_filename);
+            tracing::error!("{}", err);
             std::process::exit(1);
         }),
         None => None,
     };
+
+    // Initialize the logger
+    init_tracing(&config.as_ref().unwrap().debug);
 
     let cli = Cli::parse();
 
@@ -90,7 +94,7 @@ fn main() {
             version::run();
         }
         None => {
-            println!("No command specified");
+            tracing::error!("No command specified. Use --help for more information.");
         }
     }
 }

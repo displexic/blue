@@ -7,9 +7,9 @@ pub struct BinArgs {}
 
 pub fn run() {
     let current_path = env::current_exe().unwrap_or_else(|_| {
-        eprintln!("Failed to get current executable path");
+        tracing::error!("Failed to get current executable path");
         std::process::exit(1);
     });
 
-    println!("{}", current_path.display());
+    tracing::info!("{}", current_path.display());
 }

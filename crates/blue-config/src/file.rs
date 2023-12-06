@@ -49,6 +49,7 @@ pub struct EnvConfig {
 
 #[derive(Serialize, Deserialize)]
 pub struct Config {
+    pub debug: Option<bool>,
     pub docker: Option<DockerConfig>,
     pub env: Option<EnvConfig>,
     pub git: Option<GitConfig>,

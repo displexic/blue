@@ -9,8 +9,8 @@ pub struct CheckArgs {
 }
 
 pub fn run(command: &CheckArgs, config: &Config) {
-    println!("Checking environment: {:?}", command.env);
-    println!(
+    tracing::info!("Checking environment: {:?}", command.env);
+    tracing::info!(
         "Workspace Name: {:?}",
         config.workspace.as_ref().unwrap().name.as_ref().unwrap()
     );

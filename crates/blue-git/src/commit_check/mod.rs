@@ -1,5 +1,4 @@
 use blue_config::git::commit_check::{CommitCheckConfig, Level, RequiredCommitCheckRules};
-use colored::Colorize;
 
 pub mod find_case;
 mod merge_config;
@@ -29,11 +28,11 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
         Err((level, message)) => match level {
             Level::Disabled => (),
             Level::Warning => {
-                eprintln!("{} {}", "Warning:".yellow().bold(), message.yellow());
+                tracing::warn!("{}", message);
                 results.0.push(message);
             }
             Level::Error => {
-                eprintln!("{} {}", "Error:".red().bold(), message.red());
+                tracing::error!("{}", message);
                 results.1.push(message);
             }
         },
@@ -87,28 +86,16 @@ pub fn run(commit_message: String, config: &CommitCheckConfig) {
     println!("");
 
     if !results.0.is_empty() {
-        println!(
-            "{} {}",
-            " WARNING ".on_yellow().bold(),
-            "Commit message contains warnings".yellow()
-        );
+        tracing::warn!("Commit message contains warnings")
     }
 
     if !results.1.is_empty() {
-        eprintln!(
-            "{} {}",
-            " ERROR ".on_red().bold(),
-            "Commit message failed checks".red()
-        );
+        tracing::error!("Commit message contains errors");
         std::process::exit(1);
     }
 
     if results.0.is_empty() && results.0.is_empty() {
-        eprintln!(
-            "{} {}",
-            " SUCCESS ".on_green().bold(),
-            "Commit message passed checks".green()
-        );
+        tracing::info!("Commit message passed checks");
     }
 
     println!("");

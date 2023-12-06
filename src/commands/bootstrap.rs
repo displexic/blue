@@ -8,7 +8,7 @@ use std::{env, fs};
 pub struct BootstrapArgs {}
 
 pub fn run() {
-    println!("Setting up blue...");
+    tracing::info!("Setting up blue...");
 
     let current_path = env::current_exe().expect("Failed to get current executable path");
     let binary_name = current_path.file_name().expect("Failed to get binary name");
@@ -19,15 +19,13 @@ pub fn run() {
             let home_dir = match home::home_dir() {
                 Some(path) => path,
                 None => {
-                    eprintln!("Impossible to get your home dir!");
+                    tracing::error!("Failed to find home directory");
                     std::process::exit(1);
                 }
             };
 
             let target_dir_str = format!("{}\\.blue\\bin", home_dir.to_str().unwrap());
             let target_dir = PathBuf::from(target_dir_str);
-
-            println!("Target dir 555: {:?}", target_dir.to_str().unwrap());
 
             // Create the directory if it doesn't exist
             if !target_dir.exists() {
@@ -45,7 +43,7 @@ pub fn run() {
             let home_dir = match home::home_dir() {
                 Some(path) => path,
                 None => {
-                    eprintln!("Impossible to get your home dir!");
+                    tracing::error!("Impossible to get your home dir!");
                     std::process::exit(1);
                 }
             };
@@ -77,7 +75,7 @@ pub fn run() {
             target_dir
         }
         _ => {
-            eprintln!("Unsupported operating system");
+            tracing::error!("Unsupported operating system");
             return;
         }
     };
@@ -85,7 +83,7 @@ pub fn run() {
     let new_path = recommended_dir.join(binary_name);
 
     if let Err(err) = fs::copy(&current_path, &new_path) {
-        eprintln!(
+        tracing::error!(
             "Failed to move the binary to {}: {}",
             new_path.display(),
             err
@@ -93,7 +91,7 @@ pub fn run() {
         std::process::exit(1);
     }
 
-    println!("Adding {:?} to PATH", &recommended_dir.to_str().unwrap());
+    tracing::info!("Adding {:?} to PATH", &recommended_dir.to_str().unwrap());
 
     // Set the new PATH variable for the current process and child processes based on the OS
     match env::consts::OS {
@@ -102,14 +100,14 @@ pub fn run() {
                 "setx PATH \"{};$Env:PATH\"",
                 &recommended_dir.to_str().unwrap()
             );
-            println!("Running command: {}", cmd);
+            tracing::info!("Running command: {}", cmd);
             let result = Command::new("powershell").arg(cmd).status();
 
             if let Err(err) = result {
-                eprintln!("Failed to set PATH variable: {}", err);
+                tracing::error!("Failed to set PATH variable: {}", err);
             } else {
                 // Success message
-                println!("Please restart your terminal to use blue");
+                tracing::info!("Please restart your terminal to use blue");
             }
         }
         "linux" | "macos" => {
@@ -119,7 +117,7 @@ pub fn run() {
             let home_dir = match home::home_dir() {
                 Some(path) => path,
                 None => {
-                    eprintln!("Impossible to get your home dir!");
+                    tracing::error!("Impossible to get your home dir!");
                     std::process::exit(1);
                 }
             };
@@ -154,19 +152,19 @@ pub fn run() {
                 let result = writeln!(&file, "{}", &required_line);
 
                 if let Err(err) = result {
-                    eprintln!("Failed to write to file: {}", err);
+                    tracing::error!("Failed to write to file: {}", err);
                 } else {
                     // Success message
-                    println!("Please restart your terminal to use blue or run the following command: source ~/.bashrc");
+                    tracing::error!("Please restart your terminal to use blue or run the following command: source ~/.bashrc");
                 }
 
-                println!("{} appended to the file!", &required_line);
+                tracing::debug!("{} appended to the file!", &required_line);
             } else {
-                println!("{} already exists in the file.", &required_line);
+                tracing::debug!("{} already exists in the file.", &required_line);
             }
         }
         _ => {
-            eprintln!("Unsupported operating system");
+            tracing::error!("Unsupported operating system");
             std::process::exit(1);
         }
     };
