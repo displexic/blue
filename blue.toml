@@ -4,7 +4,6 @@ debug = false
 [workspace]
 clean_files = ["tmp"]
 
-
 [git.commit_check]
 preset = "default"
 [git.commit_check.rules]

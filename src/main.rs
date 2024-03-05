@@ -1,10 +1,4 @@
-use blue_cli::commands::bin;
-use blue_cli::commands::bootstrap;
-use blue_cli::commands::check;
-use blue_cli::commands::clean;
-use blue_cli::commands::git;
-use blue_cli::commands::setup;
-use blue_cli::commands::version;
+use blue_cli::commands::{bin, bootstrap, check, clean, git, setup, version};
 use blue_config::Config;
 use blue_log::init_tracing;
 use clap::{Parser, Subcommand};
