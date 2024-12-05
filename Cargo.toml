@@ -1,5 +1,5 @@
 [workspace]
-members = [".", "crates/blue-config", "crates/blue-git"]
+members = [".", "crates/blue-config", "crates/blue-docker", "crates/blue-git"]
 
 [workspace.package]
 version = "0.0.1"
@@ -27,6 +27,7 @@ authors.workspace = true
 
 [workspace.dependencies]
 blue_config = { path = "crates/blue-config" }
+blue_docker = { path = "crates/blue-docker" }
 blue_git = { path = "crates/blue-git" }
 blue_log = { path = "crates/blue-log" }
 regex = "1.10.2"
@@ -44,6 +45,7 @@ codegen-units = 1
 
 [dependencies]
 blue_config = { workspace = true }
+blue_docker = { workspace = true }
 blue_git = { workspace = true }
 blue_log = { workspace = true }
 regex = { workspace = true }

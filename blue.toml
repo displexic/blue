@@ -4,6 +4,11 @@ debug = false
 [workspace]
 clean_files = ["tmp"]
 
+[docker]
+compose_files = { dev = "docker-compose.development.yaml", prod = "docker-compose.production.yaml", ci = "docker-compose.ci.yaml" }
+default_compose_file = "docker-compose.yaml"
+arguments = { update = "down --rmi all --remove-orphans", logs = "-t -f --tail 1000" }
+
 [git.commit_check]
 preset = "default"
 [git.commit_check.rules]

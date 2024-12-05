@@ -1,8 +1,11 @@
+use std::{
+    env, fs,
+    io::{self, BufRead, Write},
+    path::PathBuf,
+    process::Command,
+};
+
 use clap::Args;
-use std::io::{self, BufRead, Write};
-use std::path::PathBuf;
-use std::process::Command;
-use std::{env, fs};
 
 #[derive(Args, Debug)]
 pub struct BootstrapArgs {}
@@ -93,7 +96,8 @@ pub fn run() {
 
     tracing::info!("Adding {:?} to PATH", &recommended_dir.to_str().unwrap());
 
-    // Set the new PATH variable for the current process and child processes based on the OS
+    // Set the new PATH variable for the current process and child processes based
+    // on the OS
     match env::consts::OS {
         "windows" => {
             let cmd = &format!(
@@ -155,7 +159,10 @@ pub fn run() {
                     tracing::error!("Failed to write to file: {}", err);
                 } else {
                     // Success message
-                    tracing::error!("Please restart your terminal to use blue or run the following command: source ~/.bashrc");
+                    tracing::error!(
+                        "Please restart your terminal to use blue or run the following command: \
+                         source ~/.bashrc"
+                    );
                 }
 
                 tracing::debug!("{} appended to the file!", &required_line);
